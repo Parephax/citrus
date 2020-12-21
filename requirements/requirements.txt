@@ -16,6 +16,8 @@ channels==3.0.2           # via -r requirements\base-requirements.in, channels-r
 constantly==15.1.0        # via twisted
 cryptography==3.3.1       # via autobahn, pyopenssl, service-identity
 daphne==3.0.1             # via channels
+django-ipware==3.0.2      # via -r requirements\base-requirements.in
+django-widget-tweaks==1.4.8  # via -r requirements\base-requirements.in
 django==3.1.4             # via -r requirements\base-requirements.in, channels
 hiredis==1.1.0            # via aioredis
 hyperlink==20.0.1         # via twisted

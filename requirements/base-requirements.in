@@ -1,3 +1,5 @@
 channels
 channels-redis
 django
+django-ipware
+django-widget-tweaks

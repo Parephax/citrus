@@ -6,11 +6,12 @@
     <title>Chat Room</title>
 </head>
 <body>
-    Username <input id="chat-user" type="text" size="20"><br>
+    Username <input id="chat-user" type="text" size="20", value={{client_ip}}><br>
     <textarea id="chat-log" cols="75" rows="20" readonly="true" style="resize: none;"></textarea><br>
     <input id="chat-message-input" type="text" size="99"><br>
     <input id="chat-message-submit" type="button" value="Send">
     {{ room_name|json_script:"room-name" }}
+
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
@@ -26,6 +27,24 @@
             const data = JSON.parse(e.data);
             document.querySelector('#chat-log').value += (data.username + ': ' + data.message + '\n');
         };
+
+        window.addEventListener("beforeunload", function(event) {
+            const usernameInputDom = document.querySelector('#chat-user');
+            const username = usernameInputDom.value;
+            chatSocket.send(JSON.stringify({
+                'username': username,
+                'message': "Disconnected."
+            }));
+        });
+
+        chatSocket.onopen = function(e) {
+            const usernameInputDom = document.querySelector('#chat-user');
+            const username = usernameInputDom.value;
+            chatSocket.send(JSON.stringify({
+                'username': username,
+                'message': "Connected."
+            }));
+        }
 
         chatSocket.onclose = function(e) {
             console.error('Chat socket closed unexpectedly');

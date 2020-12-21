@@ -91,3 +91,5 @@ Resources
 Django Documentation: https://www.djangoproject.com/
 
 Channels Documentation: https://channels.readthedocs.io/en/stable/introduction.html
+
+Django Widget Tweaks: https://pypi.org/project/django-widget-tweaks/

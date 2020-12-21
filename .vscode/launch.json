@@ -13,6 +13,7 @@
                 "runserver"
             ],
             "django": true,
+            "justMyCode": false,
             // "preLaunchTask": "Bump Build Version",
         },
         {
